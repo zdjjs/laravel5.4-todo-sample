@@ -13,7 +13,16 @@
         <h2>タスクリスト</h2>
         <ul>
             @foreach ($tasks as $task)
-                <li>{{ $task->task }}</li>
+                <li>
+                    <form action="{{ url('task/'.$task->id) }}" method="POST">
+                        {{ $task->task }}
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button type="submit">
+                            削除
+                        </button>
+                    </form>
+                </li>
             @endforeach
         </ul>
     @endif
