@@ -15,7 +15,7 @@
             @foreach ($tasks as $task)
                 <li>
                     <form action="{{ url('task/'.$task->id) }}" method="POST">
-                        {{ $task->task }}
+                        <a href="{{ url('task/'.$task->id.'/edit') }}">{{ $task->task }}</a>
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button type="submit">

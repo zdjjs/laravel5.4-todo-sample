@@ -30,4 +30,19 @@ class TaskController extends Controller
         $task->delete();
         return redirect('/tasks');
     }
+
+    public function edit(\App\Task $task)
+    {
+        return view('edit', ['task' => $task]);
+    }
+
+    public function update(Request $request, \App\Task  $task)
+    {
+        $this->validate($request, [
+            'task' => 'required|max:255',
+        ]);
+
+        $task->fill($request->all())->save();
+        return redirect('/tasks');
+    }
 }
